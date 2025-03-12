@@ -1,3 +1,11 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+import { firebaseConfig } from "./env.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+
 document.getElementById("log").addEventListener("click", function () {
   const loginDiv = document.getElementById("loginContainer");
   const registerDiv = document.getElementById("registerContainer");
@@ -26,4 +34,47 @@ document.getElementById("reg").addEventListener("click", function () {
 
 document.getElementById("loginBtn").addEventListener("click", function (e) {
   window.location.href = "mainPage.html";
+});
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app); // Get Firebase Auth instance
+
+// DOM Elements
+const registerBtn = document.getElementById("registerBtn");
+const loginBtn = document.getElementById("loginBtn");
+
+// Sign Up Function
+registerBtn.addEventListener("click", async () => {
+  const email = document.getElementById("signup-username").value;
+  const password = document.getElementById("signup-password").value;
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    alert("Sign Up Successful! Welcome, " + userCredential.user.email);
+  } catch (error) {
+    alert("Error: " + error.message);
+  }
+});
+
+// Login Function
+loginBtn.addEventListener("click", async () => {
+  const email = document.getElementById("login-username").value;
+  const password = document.getElementById("login-password").value;
+
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    alert("Login Successful! Welcome back, " + userCredential.user.email);
+    window.location.href = "mainPage.html"; // Redirect after login
+  } catch (error) {
+    alert("Error: " + error.message);
+  }
 });

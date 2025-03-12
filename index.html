@@ -25,11 +25,12 @@
     </div>
     <div class="Container" id="loginContainer">
       <h1>Login</h1>
+      <!-- Login Form -->
       <label for="username"></label>
       <input
         class="button"
         type="text"
-        id="username"
+        id="login-username"
         name="username"
         placeholder="Username"
       />
@@ -38,7 +39,7 @@
       <input
         class="button"
         type="text"
-        id="password"
+        id="login-password"
         name="password"
         placeholder="Password"
       />
@@ -56,11 +57,12 @@
 
     <div class="Container" id="registerContainer">
       <h1>Sign Up</h1>
+      <!-- Registration Form -->
       <label for="username"></label>
       <input
         class="button"
         type="text"
-        id="username"
+        id="signup-username"
         name="username"
         placeholder="Username"
       />
@@ -69,7 +71,7 @@
       <input
         class="button"
         type="text"
-        id="password"
+        id="signup-password"
         name="password"
         placeholder="Password"
       />
@@ -78,13 +80,15 @@
       <button class="button" type="submit" id="registerBtn" name="login">
         Sign Up
       </button>
-      <label for="registerBtn"></label>
+      <label for="placeholder="Password"></label>
       <button class="button" type="submit" id="googleBtn" name="login">
         <img src="images/google.svg" alt="Google Logo" class="google-logo" />
         Sign up with Google
       </button>
     </div>
 
-    <script src="index.js" defer></script>
+    <script src="env.js" type="module"></script>
+    <script src="index.js" type="module" defer></script>
+
   </body>
 </html>
