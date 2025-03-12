@@ -7,9 +7,27 @@ body{
     min-height: 100vh;
 }
 
+.loginContainer{
+    background-color: rgb(255, 255, 255);
+    border: solid 1px;
+    border-radius: 20px;
+    height: 600px;
+    width: 700px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .button{
     border: solid 1px;
     border-radius: 40px;
     height: 40px;
     width: 250px;
+}
+
+::placeholder{
+    text-align: center;
 }
