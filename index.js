@@ -32,10 +32,6 @@ document.getElementById("reg").addEventListener("click", function () {
   registerDiv.style.transform = "translateX(350px)";
 });
 
-document.getElementById("loginBtn").addEventListener("click", function (e) {
-  window.location.href = "mainPage.html";
-});
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app); // Get Firebase Auth instance
@@ -56,6 +52,7 @@ registerBtn.addEventListener("click", async () => {
       password
     );
     alert("Sign Up Successful! Welcome, " + userCredential.user.email);
+    window.location.href = "mainPage.html"; // redirect after login
   } catch (error) {
     alert("Error: " + error.message);
   }
@@ -73,7 +70,7 @@ loginBtn.addEventListener("click", async () => {
       password
     );
     alert("Login Successful! Welcome back, " + userCredential.user.email);
-    window.location.href = "mainPage.html"; // Redirect after login
+    window.location.href = "mainPage.html"; // redirect after login
   } catch (error) {
     alert("Error: " + error.message);
   }
