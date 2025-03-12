@@ -4,3 +4,7 @@ document.getElementById("getStarted").addEventListener("click", function(){
     div.style.transform = "translateX(350px)";
     
 });
+
+document.getElementById("loginBtn").addEventListener("click", function(e){
+    window.location.href = "mainPage.html";
+});
