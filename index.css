@@ -119,4 +119,5 @@ body {
 #login-password {
   padding-left: 10px;
   padding-right: 10px;
+  cursor: auto;
 }
