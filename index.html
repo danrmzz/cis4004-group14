@@ -1,33 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="index.css" rel="stylesheet">
-</head>
-<body>
-    
+    <link href="index.css" rel="stylesheet" />
+  </head>
+  <body>
     <div class="Container">
-        <h1>Welcome</h1>
-        <label for="getStarted"></label>
-        <button class="button" type="submit" id="getStarted" name="getStarted">get started</button>
+      <h1>Welcome</h1>
+      <label for="log"></label>
+      <button class="button" type="submit" id="log" name="log">Login</button>
+
+      <label for="register"></label>
+      <button class="button" type="submit" id="reg" name="reg">Register</button>
     </div>
     <div class="Container" id="imageContainer">
-        <h1>image</h1>
+      <h1>image</h1>
     </div>
     <div class="Container" id="loginContainer">
-        <h1>Login</h1>
-        <label for="username"></label>
-        <input class="button" type="text" id="username" name="username" placeholder="username">
-        <br>
-        <label for="password"></label>
-        <input class="button" type="text" id="password" name="password" placeholder="password">
-        <br>
-        <label for="loginBtn"></label>
-        <button class="button" type="submit" id="loginBtn" name="login">login</button>
+      <h1>Login</h1>
+      <label for="username"></label>
+      <input
+        class="button"
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Username"
+      />
+      <br />
+      <label for="password"></label>
+      <input
+        class="button"
+        type="text"
+        id="password"
+        name="password"
+        placeholder="Password"
+      />
+      <br />
+      <label for="loginBtn"></label>
+      <button class="button" type="submit" id="loginBtn" name="login">
+        Login
+      </button>
+    </div>
+
+    <div class="Container" id="registerContainer">
+      <h1>Register</h1>
+      <label for="username"></label>
+      <input
+        class="button"
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Username"
+      />
+      <br />
+      <label for="password"></label>
+      <input
+        class="button"
+        type="text"
+        id="password"
+        name="password"
+        placeholder="Password"
+      />
+      <br />
+      <label for="loginBtn"></label>
+      <button class="button" type="submit" id="loginBtn" name="login">
+        Register
+      </button>
     </div>
 
     <script src="index.js" defer></script>
-</body>
+  </body>
 </html>
