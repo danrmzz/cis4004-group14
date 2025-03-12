@@ -108,14 +108,15 @@ body {
   height: auto;
 }
 
-#googleBtn {
+#googleSignUp,
+#googleRegister {
   background-color: rgb(235, 235, 235);
 }
 
-#signup-username, 
+#signup-username,
 #signup-password,
 #login-username,
 #login-password {
-    padding-left: 10px;
-    padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

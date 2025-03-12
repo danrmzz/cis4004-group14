@@ -4,6 +4,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
 document.getElementById("log").addEventListener("click", function () {
@@ -34,11 +36,14 @@ document.getElementById("reg").addEventListener("click", function () {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app); // Get Firebase Auth instance
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 // DOM Elements
 const registerBtn = document.getElementById("registerBtn");
 const loginBtn = document.getElementById("loginBtn");
+const googleSignInBtn = document.getElementById("googleSignIn");
+const googleSignUpBtn = document.getElementById("googleRegister");
 
 // Sign Up Function
 registerBtn.addEventListener("click", async () => {
@@ -58,6 +63,19 @@ registerBtn.addEventListener("click", async () => {
   }
 });
 
+// Sign Up Function (Google)
+const signInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    alert(`Welcome, ${user.displayName}!`);
+    window.location.href = "mainPage.html"; // redirect after login
+  } catch (error) {
+    console.error("Google Sign-In Error:", error.message);
+    alert("Error: " + error.message);
+  }
+};
+
 // Login Function
 loginBtn.addEventListener("click", async () => {
   const email = document.getElementById("login-username").value;
@@ -75,3 +93,7 @@ loginBtn.addEventListener("click", async () => {
     alert("Error: " + error.message);
   }
 });
+
+// Attach Event Listeners for Google Sign-In and Sign-Up
+googleSignInBtn.addEventListener("click", signInWithGoogle);
+googleSignUpBtn.addEventListener("click", signInWithGoogle);
