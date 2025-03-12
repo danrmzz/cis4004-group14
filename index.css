@@ -5,7 +5,11 @@ body{
     align-items: center;
     text-align: center;
     min-height: 100vh;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
+
 
 .loginContainer{
     background-color: rgb(255, 255, 255);
@@ -19,6 +23,8 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
+
+
 }
 
 .button{
@@ -27,6 +33,16 @@ body{
     height: 40px;
     width: 250px;
 }
+
+#login{
+    background-color: rgb(0, 255, 89);
+}
+
+#login:hover{
+    background-color: rgb(48, 207, 104);
+    transition-duration: 400ms;
+}
+
 
 ::placeholder{
     text-align: center;
