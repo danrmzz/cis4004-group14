@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import { firebaseConfig } from "./env.js";
 
 // Initialize Firebase
@@ -10,12 +10,32 @@ const db = getFirestore(app);
 
 
 const greetingElement = document.getElementById("greeting");
+const logoutBtn = document.getElementById("logoutBtn");
 
 const storedName = localStorage.getItem("username");
 if (storedName) {
   greetingElement.textContent = `Hello, ${storedName}!`;
 } else {
   greetingElement.textContent = "Hello!";
+}
+
+const logoutUser = async () => {
+    const auth = getAuth();
+    try {
+        await signOut(auth);
+
+        localStorage.removeItem("username");
+        
+        alert("You have been logged out successfully!");
+
+        window.location.href = "index.html";
+    } catch (error) {
+        console.error("Logout failed:", error.message);
+    }
+};
+
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", logoutUser);
 }
 
 const updateGreeting = async (user) => {

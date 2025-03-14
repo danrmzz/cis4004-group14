@@ -2,10 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebas
 import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 import { firebaseConfig } from "./env.js";
 import {
-  setPersistence,
-  browserLocalPersistence,
   getAuth,
-  onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -50,17 +47,6 @@ const loginBtn = document.getElementById("loginBtn");
 const googleSignInBtn = document.getElementById("googleSignIn");
 const googleSignUpBtn = document.getElementById("googleRegister");
 
-setPersistence(auth, browserLocalPersistence)
-  .then(() => {
-    console.log("Auth persistence enabled.");
-  })
-  .catch((error) => {
-    console.error("Failed to set auth persistence:", error);
-  });
-
-console.log("index.js is loaded on this page.");
-
-
 // Sign Up Email/Password
 registerBtn.addEventListener("click", async () => {
   const email = document.getElementById("signup-email").value;
@@ -85,7 +71,6 @@ registerBtn.addEventListener("click", async () => {
     // store username locally for instant display
     localStorage.setItem("username", name);
 
-    alert(`Sign Up Successful! Welcome, ${name}`);
     window.location.href = "mainPage.html";
   } catch (error) {
     alert("Error: " + error.message);
@@ -108,7 +93,6 @@ const signInWithGoogle = async () => {
 
     localStorage.setItem("username", name);
 
-    alert(`Welcome, ${name}!`);
     window.location.href = "mainPage.html";
   } catch (error) {
     console.error("Google Sign-In Error:", error.message);
@@ -128,7 +112,6 @@ loginBtn.addEventListener("click", async () => {
       email,
       password
     );
-    alert("Login Successful! Welcome back, " + userCredential.user.email);
     window.location.href = "mainPage.html"; // redirect after login
   } catch (error) {
     alert("Error: " + error.message);
