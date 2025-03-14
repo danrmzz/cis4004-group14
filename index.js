@@ -13,6 +13,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 
 document.getElementById("log").addEventListener("click", function () {
   const loginDiv = document.getElementById("loginContainer");
@@ -114,16 +115,39 @@ const signInWithGoogle = async () => {
 
 // Login
 loginBtn.addEventListener("click", async () => {
-  const email = document.getElementById("login-username").value;
+  let identifier = document.getElementById("login-username").value;
   const password = document.getElementById("login-password").value;
 
   try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    window.location.href = "mainPage.html"; // redirect after login
+    let email = identifier;
+
+    if (!identifier.includes("@")) {
+      const usersQuery = query(collection(db, "users"), where("name", "==", identifier));
+      const querySnapshot = await getDocs(usersQuery);
+
+      if (!querySnapshot.empty) {
+        const userDoc = querySnapshot.docs[0];
+        email = userDoc.data().email;
+      } else {
+        throw new Error("Username not found.");
+      }
+    }
+
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    if (!identifier.includes("@")) {
+      localStorage.setItem("username", identifier);
+    } else {
+      const usersQuery = query(collection(db, "users"), where("email", "==", email));
+      const querySnapshot = await getDocs(usersQuery);
+    
+      if (!querySnapshot.empty) {
+        const userDoc = querySnapshot.docs[0];
+        localStorage.setItem("username", userDoc.data().name);
+      }
+    }
+    
+    window.location.href = "mainPage.html";
+    
   } catch (error) {
     alert("Error: " + error.message);
   }
