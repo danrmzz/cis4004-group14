@@ -1,6 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
 body {
   background-color: rgb(150, 106, 106);
 }
 h1 {
   text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#greeting {
+  font-size: 50px;
+  text-align: left;
+  font-family: "DM Sans", sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+#checkbox,
+.toggle {
+  align-self: flex-end;
+}
+
+hr.custom-divider {
+  border: none;
+  height: 1px;
+  background-color: #00000098;
+  margin: 10px 0;
+}
+
+/* From Uiverse.io by vinodjangid07 */
+#checkbox {
+  display: none;
+}
+
+.toggle {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition-duration: 0.5s;
+}
+
+.bars {
+  width: 100%;
+  height: 3px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 3px;
+}
+
+#bar2 {
+  transition-duration: 0.8s;
+}
+
+#bar1,
+#bar3 {
+  width: 70%;
+}
+
+#checkbox:checked + .toggle .bars {
+  position: absolute;
+  transition-duration: 0.5s;
+}
+
+#checkbox:checked + .toggle #bar2 {
+  transform: scaleX(0);
+  transition-duration: 0.5s;
+}
+
+#checkbox:checked + .toggle #bar1 {
+  width: 100%;
+  transform: rotate(45deg);
+  transition-duration: 0.5s;
+}
+
+#checkbox:checked + .toggle #bar3 {
+  width: 100%;
+  transform: rotate(-45deg);
+  transition-duration: 0.5s;
+}
+
+#checkbox:checked + .toggle {
+  transition-duration: 0.5s;
+  transform: rotate(180deg);
 }
