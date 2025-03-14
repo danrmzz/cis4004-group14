@@ -1,13 +1,20 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import { firebaseConfig } from "./env.js";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
 
 const greetingElement = document.getElementById("greeting");
 const logoutBtn = document.getElementById("logoutBtn");
@@ -20,22 +27,22 @@ if (storedName) {
 }
 
 const logoutUser = async () => {
-    const auth = getAuth();
-    try {
-        await signOut(auth);
+  const auth = getAuth();
+  try {
+    await signOut(auth);
 
-        localStorage.removeItem("username");
-        
-        alert("You have been logged out successfully!");
+    localStorage.removeItem("username");
 
-        window.location.href = "index.html";
-    } catch (error) {
-        console.error("Logout failed:", error.message);
-    }
+    alert("You have been logged out successfully!");
+
+    window.location.href = "index.html";
+  } catch (error) {
+    console.error("Logout failed:", error.message);
+  }
 };
 
 if (logoutBtn) {
-    logoutBtn.addEventListener("click", logoutUser);
+  logoutBtn.addEventListener("click", logoutUser);
 }
 
 const updateGreeting = async (user) => {
@@ -46,9 +53,9 @@ const updateGreeting = async (user) => {
 
   if (userSnap.exists()) {
     const userData = userSnap.data();
-    
+
     localStorage.setItem("username", userData.name);
-    
+
     greetingElement.textContent = `Hello, ${userData.name}!`;
   }
 };

@@ -1,5 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 import { firebaseConfig } from "./env.js";
 import {
   getAuth,
@@ -59,7 +64,11 @@ registerBtn.addEventListener("click", async () => {
   }
 
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     const user = userCredential.user;
 
     await setDoc(doc(db, "users", user.uid), {
@@ -77,7 +86,6 @@ registerBtn.addEventListener("click", async () => {
   }
 });
 
-
 // Sign Up Google
 const signInWithGoogle = async () => {
   try {
@@ -85,11 +93,15 @@ const signInWithGoogle = async () => {
     const user = result.user;
     const name = user.displayName || "User";
 
-    await setDoc(doc(db, "users", user.uid), {
-      email: user.email,
-      name: name,
-      createdAt: new Date(),
-    }, { merge: true });
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        email: user.email,
+        name: name,
+        createdAt: new Date(),
+      },
+      { merge: true }
+    );
 
     localStorage.setItem("username", name);
 
@@ -99,7 +111,6 @@ const signInWithGoogle = async () => {
     alert("Error: " + error.message);
   }
 };
-
 
 // Login
 loginBtn.addEventListener("click", async () => {
