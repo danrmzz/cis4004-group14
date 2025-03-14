@@ -13,7 +13,12 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-import { collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 
 document.getElementById("log").addEventListener("click", function () {
   const loginDiv = document.getElementById("loginContainer");
@@ -122,7 +127,10 @@ loginBtn.addEventListener("click", async () => {
     let email = identifier;
 
     if (!identifier.includes("@")) {
-      const usersQuery = query(collection(db, "users"), where("name", "==", identifier));
+      const usersQuery = query(
+        collection(db, "users"),
+        where("name", "==", identifier)
+      );
       const querySnapshot = await getDocs(usersQuery);
 
       if (!querySnapshot.empty) {
@@ -133,21 +141,27 @@ loginBtn.addEventListener("click", async () => {
       }
     }
 
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     if (!identifier.includes("@")) {
       localStorage.setItem("username", identifier);
     } else {
-      const usersQuery = query(collection(db, "users"), where("email", "==", email));
+      const usersQuery = query(
+        collection(db, "users"),
+        where("email", "==", email)
+      );
       const querySnapshot = await getDocs(usersQuery);
-    
+
       if (!querySnapshot.empty) {
         const userDoc = querySnapshot.docs[0];
         localStorage.setItem("username", userDoc.data().name);
       }
     }
-    
+
     window.location.href = "mainPage.html";
-    
   } catch (error) {
     alert("Error: " + error.message);
   }
@@ -155,3 +169,18 @@ loginBtn.addEventListener("click", async () => {
 
 googleSignInBtn.addEventListener("click", signInWithGoogle);
 googleSignUpBtn.addEventListener("click", signInWithGoogle);
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+
+    const loginContainer = document.getElementById("loginContainer");
+    const registerContainer = document.getElementById("registerContainer");
+
+    if (loginContainer.classList.contains("visible")) {
+      loginBtn.click();
+    } else if (registerContainer.classList.contains("visible")) {
+      registerBtn.click();
+    }
+  }
+});
