@@ -21,9 +21,9 @@ const logoutBtn = document.getElementById("logoutBtn");
 
 const storedName = localStorage.getItem("username");
 if (storedName) {
-  greetingElement.textContent = `Hello, ${storedName}!`;
+  greetingElement.textContent = `Welcome Back, ${storedName}!`;
 } else {
-  greetingElement.textContent = "Hello!";
+  greetingElement.textContent = "Welcome Back!";
 }
 
 const logoutUser = async () => {
@@ -56,7 +56,7 @@ const updateGreeting = async (user) => {
 
     localStorage.setItem("username", userData.name);
 
-    greetingElement.textContent = `Hello, ${userData.name}!`;
+    greetingElement.textContent = `Welcome Back, ${userData.name}!`;
   }
 };
 

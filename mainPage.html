@@ -3,11 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Financial Dashboard</title>
+    <link
+      rel="shortcut icon"
+      href="images/money-with-wings.svg"
+      type="image/svg+xml"
+    />
     <link href="mainPage.css" rel="stylesheet" />
   </head>
   <body>
-    <h1 id="greeting">Hello!</h1>
+    <div class="header">
+      <h1 id="greeting">Welcome Back!</h1>
+      <input type="checkbox" id="checkbox" />
+      <label for="checkbox" class="toggle">
+        <div class="bars" id="bar1"></div>
+        <div class="bars" id="bar2"></div>
+        <div class="bars" id="bar3"></div>
+      </label>
+    </div>
+
+    <hr class="custom-divider" />
 
     <div>
       <button>Deposit Money</button>
