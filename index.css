@@ -122,3 +122,7 @@ body {
   padding-right: 10px;
   cursor: auto;
 }
+
+#signup-name {
+  margin-bottom: 25px;
+}
