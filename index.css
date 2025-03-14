@@ -113,10 +113,11 @@ body {
   background-color: rgb(235, 235, 235);
 }
 
-#signup-username,
+#signup-email,
 #signup-password,
 #login-username,
-#login-password {
+#login-password,
+#signup-name {
   padding-left: 10px;
   padding-right: 10px;
   cursor: auto;

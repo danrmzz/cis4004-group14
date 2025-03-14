@@ -1,4 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 import { firebaseConfig } from "./env.js";
 import {
   getAuth,
@@ -45,38 +46,60 @@ const loginBtn = document.getElementById("loginBtn");
 const googleSignInBtn = document.getElementById("googleSignIn");
 const googleSignUpBtn = document.getElementById("googleRegister");
 
-// Sign Up Function
+// Sign Up
 registerBtn.addEventListener("click", async () => {
-  const email = document.getElementById("signup-username").value;
+  const email = document.getElementById("signup-email").value;
   const password = document.getElementById("signup-password").value;
+  const name = document.getElementById("signup-name").value;
+
+  if (!name) {
+    alert("Please enter your name.");
+    return;
+  }
 
   try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    alert("Sign Up Successful! Welcome, " + userCredential.user.email);
-    window.location.href = "mainPage.html"; // redirect after login
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    await setDoc(doc(db, "users", user.uid), {
+      email: user.email,
+      name: name,
+      createdAt: new Date(),
+    });
+
+    alert(`Sign Up Successful! Welcome, ${name}`);
+    window.location.href = "mainPage.html";
   } catch (error) {
     alert("Error: " + error.message);
   }
 });
 
-// Sign Up Function (Google)
+
+// Sign Up (Google)
 const signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
-    alert(`Welcome, ${user.displayName}!`);
-    window.location.href = "mainPage.html"; // redirect after login
+
+    const name = user.displayName || "User";
+
+    const userRef = doc(db, "users", user.uid);
+    await setDoc(userRef, {
+      email: user.email,
+      name: name,
+      createdAt: new Date(),
+    }, { merge: true });
+
+    alert(`Welcome, ${name}!`);
+    window.location.href = "mainPage.html";
   } catch (error) {
     console.error("Google Sign-In Error:", error.message);
     alert("Error: " + error.message);
   }
 };
 
-// Login Function
+
+// Login
 loginBtn.addEventListener("click", async () => {
   const email = document.getElementById("login-username").value;
   const password = document.getElementById("login-password").value;
@@ -94,6 +117,7 @@ loginBtn.addEventListener("click", async () => {
   }
 });
 
-// Attach Event Listeners for Google Sign-In and Sign-Up
 googleSignInBtn.addEventListener("click", signInWithGoogle);
 googleSignUpBtn.addEventListener("click", signInWithGoogle);
+
+const db = getFirestore(app);
