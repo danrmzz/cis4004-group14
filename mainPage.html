@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="mainPage.css" rel="stylesheet">
-</head>
-<body>
-  <h1>Personal Finance Dashboard</h1>
+    <link href="mainPage.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 id="greeting">Hello!</h1>
+
     <div>
       <button>Deposit Money</button>
       <button>Withdraw Money</button>
-      <button> View Transactions</button>
+      <button>View Transactions</button>
       <button>Open Exchange Rates</button>
-      <button> Tips/Advice </button>
+      <button>Tips/Advice</button>
       <button>Help</button>
-   
-      
     </div>
-</body>
+
+    <script src="env.js" type="module"></script>
+    <script src="index.js" type="module" defer></script>
+    <script>
+      console.log("mainPage.html script running!");
+    </script>
+    <script src="mainPage.js" type="module" defer></script>
+
+    
+  </body>
 </html>

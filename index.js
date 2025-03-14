@@ -1,8 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 import { firebaseConfig } from "./env.js";
 import {
+  setPersistence,
+  browserLocalPersistence,
   getAuth,
+  onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -39,6 +42,7 @@ document.getElementById("reg").addEventListener("click", function () {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+const db = getFirestore(app);
 
 // DOM Elements
 const registerBtn = document.getElementById("registerBtn");
@@ -46,7 +50,18 @@ const loginBtn = document.getElementById("loginBtn");
 const googleSignInBtn = document.getElementById("googleSignIn");
 const googleSignUpBtn = document.getElementById("googleRegister");
 
-// Sign Up
+setPersistence(auth, browserLocalPersistence)
+  .then(() => {
+    console.log("Auth persistence enabled.");
+  })
+  .catch((error) => {
+    console.error("Failed to set auth persistence:", error);
+  });
+
+console.log("index.js is loaded on this page.");
+
+
+// Sign Up Email/Password
 registerBtn.addEventListener("click", async () => {
   const email = document.getElementById("signup-email").value;
   const password = document.getElementById("signup-password").value;
@@ -67,6 +82,9 @@ registerBtn.addEventListener("click", async () => {
       createdAt: new Date(),
     });
 
+    // store username locally for instant display
+    localStorage.setItem("username", name);
+
     alert(`Sign Up Successful! Welcome, ${name}`);
     window.location.href = "mainPage.html";
   } catch (error) {
@@ -75,20 +93,20 @@ registerBtn.addEventListener("click", async () => {
 });
 
 
-// Sign Up (Google)
+// Sign Up Google
 const signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
-
     const name = user.displayName || "User";
 
-    const userRef = doc(db, "users", user.uid);
-    await setDoc(userRef, {
+    await setDoc(doc(db, "users", user.uid), {
       email: user.email,
       name: name,
       createdAt: new Date(),
     }, { merge: true });
+
+    localStorage.setItem("username", name);
 
     alert(`Welcome, ${name}!`);
     window.location.href = "mainPage.html";
@@ -119,5 +137,3 @@ loginBtn.addEventListener("click", async () => {
 
 googleSignInBtn.addEventListener("click", signInWithGoogle);
 googleSignUpBtn.addEventListener("click", signInWithGoogle);
-
-const db = getFirestore(app);
