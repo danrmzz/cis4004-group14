@@ -1,24 +1,46 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import {
-  getFirestore,
-  doc,
-  setDoc,
-  getDoc,
-} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
-import { firebaseConfig } from "./env.js";
-import {
   getAuth,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
-  GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import {
+  getFirestore,
+  doc,
+  setDoc,
   collection,
   query,
   where,
   getDocs,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+
+let auth, provider, db;
+
+// Fetch Firebase config from backend
+fetch('/api/firebase-config')
+  .then(response => response.json())
+  .then(config => {
+    // Initialize Firebase with fetched config
+    const firebaseConfig = {
+      apiKey: config.apiKey,
+      authDomain: config.authDomain,
+      projectId: config.projectId,
+      storageBucket: config.storageBucket,
+      messagingSenderId: config.messagingSenderId,
+      appId: config.appId,
+      measurementId: config.measurementId
+    };
+
+    const app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+    provider = new GoogleAuthProvider();
+    db = getFirestore(app);
+
+    console.log("Firebase Initialized:", app);
+  })
+  .catch(error => console.error('Error fetching Firebase config:', error));
 
 document.getElementById("log").addEventListener("click", function () {
   const loginDiv = document.getElementById("loginContainer");
@@ -45,12 +67,6 @@ document.getElementById("reg").addEventListener("click", function () {
   registerDiv.classList.add("visible");
   registerDiv.style.transform = "translateX(350px)";
 });
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-const db = getFirestore(app);
 
 // DOM Elements
 const registerBtn = document.getElementById("registerBtn");
