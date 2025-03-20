@@ -9,12 +9,49 @@ import {
   onAuthStateChanged,
   signOut,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-import { firebaseConfig } from "./env.js";
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+let auth, db;
+
+// Function to check authentication state
+const checkAuthState = () => {
+  if (!auth) {
+    console.error("Auth is not initialized yet.");
+    return;
+  }
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      await updateGreeting(user);
+    } else {
+      window.location.href = "index.html"; // Redirect if not logged in
+    }
+  });
+};
+
+// Fetch Firebase config from backend
+fetch('/api/firebase-config')
+  .then(response => response.json())
+  .then(config => {
+    // Initialize Firebase with fetched config
+    const firebaseConfig = {
+      apiKey: config.apiKey,
+      authDomain: config.authDomain,
+      projectId: config.projectId,
+      storageBucket: config.storageBucket,
+      messagingSenderId: config.messagingSenderId,
+      appId: config.appId,
+      measurementId: config.measurementId
+    };
+
+    const app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+    db = getFirestore(app);
+
+    console.log("Firebase Initialized:", app);
+    checkAuthState(); // ✅ Now this function is defined before being called
+  })
+  .catch(error => console.error('Error fetching Firebase config:', error));
+
 
 const greetingElement = document.getElementById("greeting");
 const logoutBtn = document.getElementById("logoutBtn");
@@ -59,11 +96,3 @@ const updateGreeting = async (user) => {
     greetingElement.textContent = `Welcome Back, ${userData.name}!`;
   }
 };
-
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    await updateGreeting(user);
-  } else {
-    window.location.href = "index.html"; // redirect if not logged in
-  }
-});
