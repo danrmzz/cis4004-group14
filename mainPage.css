@@ -1,3 +1,21 @@
 body {
-  background-color: rgb(150, 106, 106);
+  background-color: rgb(245, 239, 239);
+  margin: 0;
+}
+
+#topContainer{
+  height: 150px;
+  width: 100%;
+  position: sticky;
+  border-bottom: 1px solid black;
+  background-color: brown;
+  
+}
+
+#directory{
+  height: 100vh;
+  width: 300px;
+  position: sticky;
+  border-right: 1px solid black;
+  background-color: rgba(42, 71, 165, 0.381);
 }
