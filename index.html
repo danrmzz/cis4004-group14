@@ -12,81 +12,97 @@
     />
   </head>
   <body>
-    <div class="Container">
-      <h1>Welcome</h1>
-      <label for="log"></label>
-      <button class="button" type="submit" id="log" name="log">Login</button>
 
-      <label for="register"></label>
-      <button class="button" type="submit" id="reg" name="reg">Sign Up</button>
-    </div>
-    <div class="Container" id="imageContainer">
-      <p>img</p>
-    </div>
-    <div class="Container" id="loginContainer">
-      <h1>Login</h1>
-      <!-- Login Form -->
-      <label for="username"></label>
-      <input
-        class="button"
-        type="email"
-        id="login-username"
-        name="username"
-        placeholder="Email"
-      />
-      <br />
-      <label for="password"></label>
-      <input
-        class="button"
-        type="password"
-        id="login-password"
-        name="password"
-        placeholder="Password"
-      />
-      <br />
-      <label for="loginBtn"></label>
-      <button class="button" type="submit" id="loginBtn" name="login">
-        Login
-      </button>
-      <label for="loginBtn"></label>
-      <button class="button" type="submit" id="googleSignIn" name="login">
-        <img src="images/google.svg" alt="Google Logo" class="google-logo" />
-        Log in with Google
-      </button>
-    </div>
+    <div class="mainContainer">
+      
 
-    <div class="Container" id="registerContainer">
-      <h1>Sign Up</h1>
-      <!-- Registration Form -->
-      <label for="username"></label>
-      <input
-        class="button"
-        type="email"
-        id="signup-username"
-        name="username"
-        placeholder="Email"
-      />
-      <br />
-      <label for="password"></label>
-      <input
-        class="button"
-        type="password"
-        id="signup-password"
-        name="password"
-        placeholder="Password"
-      />
-      <br />
-      <label for="registerBtn"></label>
-      <button class="button" type="submit" id="registerBtn" name="login">
-        Sign Up
-      </button>
-      <label for="googleRegister" placeholder="Password"></label>
-      <button class="button" type="submit" id="googleRegister" name="login">
-        <img src="images/google.svg" alt="Google Logo" class="google-logo" />
-        Sign up with Google
-      </button>
-    </div>
+      <div id="imageContainer">
+        <h1>Welcome</h1>
+       
 
+      </div>
+
+      <div class="Container" id="registerContainer">
+        <p>Ready for finanical freedom?</p>
+        <h1>Sign Up</h1>
+        <!-- Registration Form -->
+        <label for="signup-username"></label>
+        <input
+          class="input"
+          type="email"
+          id="signup-username"
+          name="username"
+          placeholder="Email"
+          autocomplete="off"
+        />
+        <br>
+        <label for="signup-password"></label>
+        <input
+          class="input"
+          type="password"
+          id="signup-password"
+          name="password"
+          placeholder="Password"
+        />
+        <br>
+
+        <label for="registerBtn"></label>
+        <button class="button" type="submit" id="registerBtn" name="login">
+          Sign Up
+        </button>
+
+        
+
+        <label for="googleRegister" placeholder="Password"></label>
+        <button class="button" type="submit" id="googleRegister" name="login">
+          <img src="images/google.svg" alt="Google Logo" class="google-logo" />
+          Sign up with Google
+        </button>
+
+        <p>Already have an account?</p>
+        <label for="log"></label>
+        <button class="button" type="submit" id="log" name="log">Login</button>
+      </div>
+      
+      <div class="Container" id="loginContainer">
+        <h1>Login</h1>
+        
+        <label for="login-username"></label>
+        <input
+          class="button"
+          type="email"
+          id="login-username"
+          name="username"
+          placeholder="Email"
+          autocomplete="off"
+        />
+        <br />
+        <label for="login-password"></label>
+        <input
+          class="button"
+          type="password"
+          id="login-password"
+          name="password"
+          placeholder="Password"
+        />
+        <br />
+        <label for="loginBtn"></label>
+        <button class="button" type="submit" id="loginBtn" name="login">
+          Login
+        </button>
+        <label for="googleSignIn"></label>
+        <button class="button" type="submit" id="googleSignIn" name="login">
+          <img src="images/google.svg" alt="Google Logo" class="google-logo" />
+          Log in with Google
+        </button>
+
+        <p>Dont have an account?</p>
+        <label for="reg"></label>
+        <button class="button" type="submit" id="reg" name="reg">Sign Up</button>
+      </div>
+    
+    </div>
+    
     <script src="env.js" type="module"></script>
     <script src="index.js" type="module" defer></script>
   </body>
