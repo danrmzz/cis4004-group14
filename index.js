@@ -8,17 +8,22 @@ import {
   GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
+
+
+
+
+
 document.getElementById("log").addEventListener("click", function () {
   const loginDiv = document.getElementById("loginContainer");
   const registerDiv = document.getElementById("registerContainer");
-
+  console.log("h");
   // Hide register container
   registerDiv.classList.remove("visible");
-  registerDiv.style.transform = "translateX(0px)";
-
+  registerDiv.style.transform = "translateY(100%)";
+ 
   // Show login container
   loginDiv.classList.add("visible");
-  loginDiv.style.transform = "translateX(350px)";
+  loginDiv.style.transform = "translateY(0)";
 });
 
 document.getElementById("reg").addEventListener("click", function () {
@@ -27,12 +32,15 @@ document.getElementById("reg").addEventListener("click", function () {
 
   // Hide login container
   loginDiv.classList.remove("visible");
-  loginDiv.style.transform = "translateX(0px)";
-
+  loginDiv.style.transform = "translateY(100%)";
+ 
   // Show register container
   registerDiv.classList.add("visible");
-  registerDiv.style.transform = "translateX(350px)";
+  registerDiv.style.transform = "translateY(0)";
 });
+
+
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
