@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(245, 239, 239);
+  background-color: rgb(36, 35, 35);
   display: flex;
   justify-content: center;
 }
@@ -10,11 +10,11 @@ body {
   border: 1px solid black;
   border-radius: 40px;
   margin-top: 100px;
-  background-color: beige;
+  background-color: rgb(84, 84, 84);
   display: grid;
   
-  grid-template-columns: repeat(1fr, 2);
-  grid-template-rows: repeat(1fr, auto);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto);
   justify-items: center;
   margin-bottom: 30px;
   padding-bottom: 30px;
@@ -35,8 +35,9 @@ body {
   
   
   margin-top: 70px;
-  background-color: rgb(63, 109, 76);
+  background-color: rgba(207, 207, 207, 0);
   grid-area: 2 / 1 / 2 / 1; 
+ 
 }
 
 .budgetContainer{
@@ -45,8 +46,17 @@ body {
   border: 1px solid black;
   border-radius: 40px;
   margin-top: 70px;
-  background-color: rgb(220, 245, 227);
+  background-color: rgb(255, 255, 255);
   grid-area: 2 / 2 / 2 / 2; 
+  justify-items: center;
+  
+}
+
+#donutchart{
+  height: 100%;  
+  width: 60%;   
+  max-width: 600px;  
+  
 }
 
 .savingsGraph{
