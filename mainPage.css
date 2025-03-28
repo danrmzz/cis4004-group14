@@ -1,21 +1,70 @@
 body {
   background-color: rgb(245, 239, 239);
-  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
-#topContainer{
-  height: 150px;
-  width: 100%;
-  position: sticky;
-  border-bottom: 1px solid black;
-  background-color: brown;
+.mainContainer{
+  height: 95%;
+  width: 90vw;
+  border: 1px solid black;
+  border-radius: 40px;
+  margin-top: 100px;
+  background-color: beige;
+  display: grid;
   
+  grid-template-columns: repeat(1fr, 2);
+  grid-template-rows: repeat(1fr, auto);
+  justify-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
 }
 
-#directory{
-  height: 100vh;
-  width: 300px;
-  position: sticky;
-  border-right: 1px solid black;
-  background-color: rgba(42, 71, 165, 0.381);
+.budgetTextContainer{
+  height: 500px;
+  width: 90%;
+  border: 1px solid black;
+  margin-top: 70px;
+  background-color: rgb(63, 109, 76);
+  grid-area: 1 / 1 / 1 / 1; 
+}
+
+.budgetContainer{
+  height: 500px;
+  width: 90%;
+  border: 1px solid black;
+ 
+  margin-top: 70px;
+  background-color: rgb(220, 245, 227);
+  grid-area: 1 / 2 / 1 / 2; 
+}
+
+.savingsGraph{
+  height: 300px;
+  width: 95%;
+  border: 1px solid black;
+ 
+  margin-top: 70px;
+  background-color: rgb(31, 64, 161);
+  grid-area: 2 / 1 / 2 / span 2;
+}
+
+.stocksGraph{
+  height: 500px;
+  width: 90%;
+  border: 1px solid black;
+ 
+  margin-top: 70px;
+  background-color: rgb(161, 31, 79);
+  grid-area: 3 / 1 / 3 / 1;
+}
+
+.currencyExchange{
+  height: 500px;
+  width: 90%;
+  border: 1px solid black;
+ 
+  margin-top: 70px;
+  background-color: rgb(31, 161, 70);
+  grid-area: 3 / 2 / 3 / 2;
 }
