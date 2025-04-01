@@ -93,13 +93,60 @@ registerBtn.addEventListener("click", async () => {
     );
     const user = userCredential.user;
 
+    // Save user to Firebase Firestore
     await setDoc(doc(db, "users", user.uid), {
       email: user.email,
       name: name,
       createdAt: new Date(),
     });
 
-    // store username locally for instant display
+    // Also save user to MySQL database
+    try {
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firebaseUid: user.uid,
+          email: user.email,
+          name: name
+        }),
+      });
+
+      const data = await response.json();
+      if (!data.success) {
+        console.error('Failed to save user to MySQL:', data.message);
+      } else {
+        console.log('User saved to MySQL successfully');
+        
+        // Create a default checking account for the new user
+        const accountResponse = await fetch('/api/accounts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firebaseUid: user.uid,
+            accountType: 'checking',
+            initialBalance: 0,
+            currency: 'USD'
+          }),
+        });
+        
+        const accountData = await accountResponse.json();
+        if (!accountData.success) {
+          console.error('Failed to create default account:', accountData.message);
+        } else {
+          console.log('Default account created successfully');
+        }
+      }
+    } catch (dbError) {
+      console.error('Error saving to MySQL:', dbError);
+      // Continue with login even if MySQL save fails
+    }
+
+    // Store username locally for instant display
     localStorage.setItem("username", name);
 
     window.location.href = "mainPage.html";
@@ -115,6 +162,7 @@ const signInWithGoogle = async () => {
     const user = result.user;
     const name = user.displayName || "User";
 
+    // Save to Firebase Firestore
     await setDoc(
       doc(db, "users", user.uid),
       {
@@ -124,6 +172,58 @@ const signInWithGoogle = async () => {
       },
       { merge: true }
     );
+
+    // Also save to MySQL database
+    try {
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firebaseUid: user.uid,
+          email: user.email,
+          name: name
+        }),
+      });
+
+      const data = await response.json();
+      if (!data.success) {
+        console.error('Failed to save Google user to MySQL:', data.message);
+      } else {
+        console.log('Google user saved to MySQL successfully');
+        
+        // Check if user already has accounts
+        const accountsResponse = await fetch(`/api/users/${user.uid}/accounts`);
+        const accountsData = await accountsResponse.json();
+        
+        // If no accounts exist, create a default checking account
+        if (accountsData.success && (!accountsData.accounts || accountsData.accounts.length === 0)) {
+          const accountResponse = await fetch('/api/accounts', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              firebaseUid: user.uid,
+              accountType: 'checking',
+              initialBalance: 0,
+              currency: 'USD'
+            }),
+          });
+          
+          const accountData = await accountResponse.json();
+          if (!accountData.success) {
+            console.error('Failed to create default account:', accountData.message);
+          } else {
+            console.log('Default account created successfully');
+          }
+        }
+      }
+    } catch (dbError) {
+      console.error('Error saving Google user to MySQL:', dbError);
+      // Continue with login even if MySQL save fails
+    }
 
     localStorage.setItem("username", name);
 
@@ -162,6 +262,61 @@ loginBtn.addEventListener("click", async () => {
       email,
       password
     );
+    
+    const user = userCredential.user;
+    
+    // Ensure user exists in MySQL database during login
+    try {
+      // Check if user exists
+      const userResponse = await fetch(`/api/users/${user.uid}`);
+      const userData = await userResponse.json();
+      
+      if (!userData.success) {
+        // User doesn't exist in MySQL, create them
+        console.log('User not found in MySQL, creating...');
+        
+        let userName = "";
+        if (!identifier.includes("@")) {
+          userName = identifier;
+        } else {
+          const usersQuery = query(
+            collection(db, "users"),
+            where("email", "==", email)
+          );
+          const querySnapshot = await getDocs(usersQuery);
+
+          if (!querySnapshot.empty) {
+            const userDoc = querySnapshot.docs[0];
+            userName = userDoc.data().name;
+          }
+        }
+        
+        const createResponse = await fetch('/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firebaseUid: user.uid,
+            email: user.email,
+            name: userName || "User"
+          }),
+        });
+        
+        const createData = await createResponse.json();
+        if (!createData.success) {
+          console.error('Failed to create user in MySQL:', createData.message);
+        } else {
+          console.log('User created in MySQL successfully during login');
+        }
+      } else {
+        console.log('User found in MySQL database');
+      }
+    } catch (dbError) {
+      console.error('Error checking/creating user in MySQL:', dbError);
+      // Continue with login even if MySQL operations fail
+    }
+    
     if (!identifier.includes("@")) {
       localStorage.setItem("username", identifier);
     } else {

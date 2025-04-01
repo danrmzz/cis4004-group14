@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Market - Financial Dashboard</title>
+  <link rel="shortcut icon" href="images/money-with-wings.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="stocks.css">
+</head>
+<body>
+  <div class="header">
+    <h1 id="greeting">Stock Market</h1>
+    <a href="mainPage.html" class="back-button">Back to Dashboard</a>
+  </div>
+
+  <hr class="custom-divider">
+
+  <div class="container">
+    <div class="search-section">
+      <h2>Search Stocks</h2>
+      <div class="search-box">
+        <input type="text" id="stock-search" placeholder="Enter stock symbol (e.g., AAPL, MSFT)">
+        <button id="search-button">Search</button>
+      </div>
+      <div id="stock-result" class="stock-result"></div>
+    </div>
+
+    <div class="watchlist-section">
+      <h2>My Watchlist</h2>
+      <div id="watchlist" class="watchlist">
+        <div class="loading">Loading your watchlist...</div>
+      </div>
+    </div>
+
+    <div class="stock-details-section">
+      <h2>Stock Details</h2>
+      <div id="stock-details" class="stock-details">
+        <div class="placeholder">Select a stock to view details</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="stocks.js" type="module"></script>
+</body>
+</html>

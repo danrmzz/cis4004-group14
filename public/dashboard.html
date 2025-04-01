@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Dashboard - Analytics</title>
+  <link rel="shortcut icon" href="images/money-with-wings.svg" type="image/svg+xml" />
+  <link href="dashboard.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-title">
+      <h1>Financial Analytics</h1>
+    </div>
+    <div class="user-info">
+      <span id="username">Welcome back!</span>
+      <a href="mainPage.html" class="back-button">Back to Dashboard</a>
+    </div>
+  </div>
+
+  <div class="dashboard-container">
+    <div class="dashboard-sidebar">
+      <div class="sidebar-section">
+        <h3>Account Summary</h3>
+        <div id="accounts-summary">
+          <div class="loading">Loading accounts...</div>
+        </div>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3>Account Selection</h3>
+        <select id="account-selector" class="full-width-select">
+          <option value="all">All Accounts</option>
+          <!-- Account options will be added dynamically -->
+        </select>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3>Date Range</h3>
+        <select id="date-range" class="full-width-select">
+          <option value="7">Last 7 days</option>
+          <option value="30" selected>Last 30 days</option>
+          <option value="90">Last 90 days</option>
+          <option value="365">Last year</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="dashboard-content">
+      <div class="chart-container">
+        <h2>Cash Flow</h2>
+        <canvas id="cashflow-chart"></canvas>
+      </div>
+      
+      <div class="chart-container">
+        <h2>Balance History</h2>
+        <canvas id="balance-chart"></canvas>
+      </div>
+      
+      <div class="charts-row">
+        <div class="chart-container half-width">
+          <h2>Transaction Breakdown</h2>
+          <canvas id="transaction-pie-chart"></canvas>
+        </div>
+        
+        <div class="chart-container half-width">
+          <h2>Account Distribution</h2>
+          <canvas id="accounts-pie-chart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="dashboard.js" type="module" defer></script>
+</body>
+</html>

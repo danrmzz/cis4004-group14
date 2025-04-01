@@ -24,15 +24,103 @@
 
     <hr class="custom-divider" />
 
-    <div>
-      <button>Deposit Money</button>
-      <button>Withdraw Money</button>
-      <button>View Transactions</button>
-      <button>Open Exchange Rates</button>
-      <button>Tips/Advice</button>
-      <button>Help</button>
+    <div class="dashboard-container">
+      <!-- Accounts Section -->
+      <div class="accounts-section">
+        <h2>My Accounts</h2>
+        <div id="accounts-list" class="accounts-list">
+          <!-- Accounts will be loaded here dynamically -->
+          <div class="loading">Loading accounts...</div>
+        </div>
+        <button id="newAccountBtn" class="action-button">Create New Account</button>
+      </div>
 
-      <button id="logoutBtn">Logout</button>
+      <!-- Transactions Section -->
+      <div class="transactions-section">
+        <h2>Recent Transactions</h2>
+        <select id="account-selector" class="account-selector">
+          <option value="all">All Accounts</option>
+          <!-- Account options will be added dynamically -->
+        </select>
+        <div id="transactions-list" class="transactions-list">
+          <!-- Transactions will be loaded here dynamically -->
+          <div class="loading">Select an account to view transactions</div>
+        </div>
+      </div>
+
+      <!-- Transaction Forms -->
+      <div class="transaction-forms">
+        <div class="transaction-form">
+          <h3>Deposit Money</h3>
+          <form id="deposit-form">
+            <select id="deposit-account" name="account" required>
+              <option value="">Select Account</option>
+              <!-- Account options will be added dynamically -->
+            </select>
+            <input type="number" id="deposit-amount" name="amount" min="0.01" step="0.01" placeholder="Amount" required>
+            <input type="text" id="deposit-description" name="description" placeholder="Description (optional)">
+            <button type="submit" class="action-button">Deposit</button>
+          </form>
+        </div>
+
+        <div class="transaction-form">
+          <h3>Withdraw Money</h3>
+          <form id="withdraw-form">
+            <select id="withdraw-account" name="account" required>
+              <option value="">Select Account</option>
+              <!-- Account options will be added dynamically -->
+            </select>
+            <input type="number" id="withdraw-amount" name="amount" min="0.01" step="0.01" placeholder="Amount" required>
+            <input type="text" id="withdraw-description" name="description" placeholder="Description (optional)">
+            <button type="submit" class="action-button">Withdraw</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal for creating new account -->
+      <div id="new-account-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <h2>Create New Account</h2>
+          <form id="new-account-form">
+            <div class="form-group">
+              <label for="account-type">Account Type</label>
+              <select id="account-type" name="accountType" required>
+                <option value="checking">Checking</option>
+                <option value="savings">Savings</option>
+                <option value="investment">Investment</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="initial-balance">Initial Balance</label>
+              <input type="number" id="initial-balance" name="initialBalance" min="0" step="0.01" value="0">
+            </div>
+            <div class="form-group">
+              <label for="currency">Currency</label>
+              <select id="currency" name="currency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="CAD">CAD</option>
+              </select>
+            </div>
+            <button type="submit" class="action-button">Create Account</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-content">
+        <ul class="sidebar-menu">
+          <li><button id="dashboard-btn" class="sidebar-button active">Dashboard</button></li>
+          <li><button id="transactions-btn" class="sidebar-button">All Transactions</button></li>
+          <li><button id="stock-market-btn" class="sidebar-button">Stock Market</button></li>
+          <li><a href="dashboard.html" class="sidebar-button">Analytics Dashboard</a></li>
+          <li><button id="logoutBtn" class="sidebar-button logout">Logout</button></li>
+        </ul>
+      </div>
     </div>
 
     <script src="mainPage.js" type="module" defer></script>
