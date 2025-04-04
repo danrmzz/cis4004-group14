@@ -4,7 +4,8 @@ html{
   height: 100%;
 }
 body {
-  background-color: rgb(52,155,219);
+  
+  background-image: linear-gradient(rgb(52,155,219), rgb(33, 93, 162));
   display: flex;
   justify-content: center;
   align-items: center;
