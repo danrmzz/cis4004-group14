@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Dashboard</title>
+    <link href="index.css" rel="stylesheet" />
+    <link
+      rel="shortcut icon"
+      href="images/money-with-wings.svg"
+      type="image/svg+xml"
+    />
+  </head>
+  <body>
+    <div class="Container">
+      <h1>Welcome</h1>
+      <h4>Personal Finance Dashboard</h4>
+      <label for="log"></label>
+      <button class="button" type="submit" id="log" name="log">Login</button>
+
+      <label for="register"></label>
+      <button class="button" type="submit" id="reg" name="reg">Sign Up</button>
+    </div>
+    <div class="Container" id="imageContainer">
+      <p>img</p>
+    </div>
+    <div class="Container" id="loginContainer">
+      <h1>Login</h1>
+      <!-- Login Form -->
+      <label for="username"></label>
+      <input
+        class="button"
+        type="username"
+        id="login-username"
+        name="email"
+        placeholder="Username or Email"
+      />
+      <br />
+      <label for="password"></label>
+      <input
+        class="button"
+        type="password"
+        id="login-password"
+        name="password"
+        placeholder="Password"
+      />
+      <br />
+      <label for="loginBtn"></label>
+      <button class="button" type="submit" id="loginBtn" name="login">
+        Login
+      </button>
+      <label for="loginBtn"></label>
+      <button class="button" type="submit" id="googleSignIn" name="login">
+        <img src="images/google.svg" alt="Google Logo" class="google-logo" />
+        Log in with Google
+      </button>
+    </div>
+
+    <div class="Container" id="registerContainer">
+      <h1>Sign Up</h1>
+      <!-- Registration Form -->
+      <label for="name"></label>
+      <input
+        class="button"
+        type="text"
+        id="signup-name"
+        name="name"
+        placeholder="Username"
+      />
+
+      <label for="email"></label>
+      <input
+        class="button"
+        type="email"
+        id="signup-email"
+        name="username"
+        placeholder="Email"
+      />
+      <br />
+      <label for="password"></label>
+      <input
+        class="button"
+        type="password"
+        id="signup-password"
+        name="password"
+        placeholder="Password"
+      />
+      <br />
+      <label for="registerBtn"></label>
+      <button class="button" type="submit" id="registerBtn" name="login">
+        Sign Up
+      </button>
+      <label for="googleRegister" placeholder="Password"></label>
+      <button class="button" type="submit" id="googleRegister" name="login">
+        <img src="images/google.svg" alt="Google Logo" class="google-logo" />
+        Sign up with Google
+      </button>
+    </div>
+
+    <script src="index.js" type="module" defer></script>
+  </body>
+</html>
