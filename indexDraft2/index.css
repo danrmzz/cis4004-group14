@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+body {
+  background-color: rgb(67, 70, 77);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+
+  font-family: "DM Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.Container {
+  background-color: rgb(255, 255, 255);
+  border: solid 1px;
+  border-right: none;
+  border-color: white;
+  border-radius: 20px 0px 0px 20px;
+  height: 600px;
+  width: 700px;
+
+  box-shadow: 20px 20px 40px rgb(0, 0, 0), -5px -5px 40px rgb(219, 217, 220);
+
+  display: flex;
+  flex-direction: column;
+  columns: 2;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#imageContainer {
+  border-radius: 0px 20px 20px 0px;
+  border-left: none;
+  border-right: solid 1px;
+  border-color: white;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: solid 1px;
+  border-radius: 40px;
+  height: 40px;
+  width: 250px;
+  margin-top: 5px;
+  cursor: pointer;
+  font-family: "DM Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+::placeholder {
+  text-align: left;
+}
+
+#loginContainer {
+  visibility: hidden;
+  position: absolute;
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  border-radius: 0px 20px 20px 0px;
+  box-shadow: 20px 20px 40px rgb(0, 0, 0);
+}
+
+#loginContainer.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+#registerContainer {
+  visibility: hidden;
+  position: absolute;
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  border-radius: 0px 20px 20px 0px;
+  box-shadow: 20px 20px 40px rgb(0, 0, 0);
+}
+
+#registerContainer.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+#loginBtn,
+#registerBtn {
+  background-color: rgb(0, 255, 89);
+}
+
+#loginBtn:hover,
+#registerBtn:hover {
+  background-color: rgb(48, 207, 104);
+  transition-duration: 400ms;
+}
+
+#log,
+#reg {
+  background-color: rgb(0, 255, 89);
+}
