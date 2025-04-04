@@ -110,6 +110,7 @@ body {
 .main-logo {
   width: 400px;
   height: auto;
+  margin-bottom: 30px;
 }
 
 #googleSignUp,
