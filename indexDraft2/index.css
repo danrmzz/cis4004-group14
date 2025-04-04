@@ -100,3 +100,35 @@ body {
 #reg {
   background-color: rgb(0, 255, 89);
 }
+
+#log:hover,
+#reg:hover {
+  background-color: rgb(48, 207, 104);
+  transition-duration: 400ms;
+}
+
+.main-logo {
+  width: 400px;
+  height: auto;
+  margin-bottom: 30px; 
+
+}
+
+#googleSignUp,
+#googleRegister {
+  background-color: rgb(235, 235, 235);
+}
+
+#signup-email,
+#signup-password,
+#login-username,
+#login-password,
+#signup-name {
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: auto;
+}
+
+#signup-name {
+  margin-bottom: 25px;
+}
