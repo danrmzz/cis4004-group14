@@ -1,19 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
-
+html{
+  margin: 0;
+  height: 100%;
+}
 body {
-  background-color: rgb(67, 70, 77);
+  background-color: rgb(52,155,219);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   min-height: 100vh;
-
+  margin: 0;
   font-family: "DM Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .Container {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(245,247,250);
   border: solid 1px;
   border-right: none;
   border-color: white;
@@ -21,7 +24,7 @@ body {
   height: 600px;
   width: 700px;
 
-  box-shadow: 20px 20px 40px rgb(0, 0, 0), -5px -5px 40px rgb(219, 217, 220);
+  box-shadow: 10px 10px 15px rgb(42, 98, 162);
 
   display: flex;
   flex-direction: column;
@@ -36,6 +39,7 @@ body {
   border-left: none;
   border-right: solid 1px;
   border-color: white;
+  box-shadow: 10px 10px 15px rgb(42, 98, 162);
 }
 
 .button {
@@ -60,10 +64,11 @@ body {
 #loginContainer {
   visibility: hidden;
   position: absolute;
+  
   opacity: 0;
   transition: transform 0.8s ease, opacity 0.8s ease;
   border-radius: 0px 20px 20px 0px;
-  box-shadow: 20px 20px 40px rgb(0, 0, 0);
+  box-shadow: 10px 10px 15px rgb(42, 98, 162);
 }
 
 #loginContainer.visible {
@@ -77,7 +82,7 @@ body {
   opacity: 0;
   transition: transform 0.8s ease, opacity 0.8s ease;
   border-radius: 0px 20px 20px 0px;
-  box-shadow: 20px 20px 40px rgb(0, 0, 0);
+  box-shadow: 10px 10px 15px rgb(42, 98, 162);
 }
 
 #registerContainer.visible {
@@ -87,23 +92,27 @@ body {
 
 #loginBtn,
 #registerBtn {
-  background-color: rgb(0, 255, 89);
+  background-color:  rgb(52,155,219);
+  color: white;
 }
 
 #loginBtn:hover,
 #registerBtn:hover {
-  background-color: rgb(48, 207, 104);
+  background-color: #2980b9;
+  
   transition-duration: 400ms;
 }
 
 #log,
 #reg {
-  background-color: rgb(0, 255, 89);
+  background-color:  rgb(52,155,219);
+  color: white;
 }
 
 #log:hover,
 #reg:hover {
-  background-color: rgb(48, 207, 104);
+  background-color:  #2980b9;
+  
   transition-duration: 400ms;
 }
 
@@ -126,6 +135,7 @@ body {
   padding-left: 10px;
   padding-right: 10px;
   cursor: auto;
+  border-color: #e0e0e0;
 }
 
 #signup-name {
