@@ -45,6 +45,10 @@ h1, h2, h3 {
   overflow-y: auto;
 }
 
+.colorChange{
+  background-color: rgb(52,155,219);
+}
+
 .dashboard-content {
   flex: 1;
   padding: 20px;
