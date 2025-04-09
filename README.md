@@ -25,5 +25,10 @@ Open your browser and navigate to the web app. PowerShell or Terminal output wil
 You should now be at our main landing page which will ask you to log in or sign up. 
 
 
+# USE OF AI DECLARATION
+
+## Claude AI was used exclusively on back-end, primarily with debugging. This was incredibly helpful when back-end team was stuck on connecting MySQL and the stock API together with the web app and transferring data from the API to the database.
+
+
 
 
