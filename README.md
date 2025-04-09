@@ -28,7 +28,7 @@ You should now be at our main landing page which will ask you to log in or sign 
 # USE OF AI DECLARATION
 
 ## Claude AI was used sparingly on the back-end, primarily with debugging. This was incredibly helpful when the back-end team was stuck trying to connect MySQL and the stock API together with the web app and transferring data from the API to the database.
-## Unfortunately the prompts used for AI were lost. I (Maxwell Williamson) ran out of chat length when using it to study for my Computer Architecture exam and had to delete my old chats. I was unaware the prompts were required for submission when I did so, please do not take away points from my teammates for this error.
+## Unfortunately the prompts used for AI were lost. I (Maxwell Williamson) ran out of chat length when using it to study for my Computer Architecture exam and had to delete my old chats. I was unaware the prompts were required for submission when I did so, please do not take away points from my teammates for this error. Nobody else on the project made use of AI but me. Prompts I can remember were 'Can you help me figure out why I am receiving this error? I am trying to connect a MySQL database to a web app project.' and 'Can you help me figure out why I am receiving this error? I am trying to make use of AlphaVantage Stock API and connect it to my web app project and SQL database.'
 
 
 
