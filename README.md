@@ -27,7 +27,7 @@ You should now be at our main landing page which will ask you to log in or sign 
 
 # USE OF AI DECLARATION
 
-## Claude AI was used sparingly on the back-end, primarily with debugging. This was incredibly helpful when back-end team was stuck on connecting MySQL and the stock API together with the web app and transferring data from the API to the database.
+## Claude AI was used sparingly on the back-end, primarily with debugging. This was incredibly helpful when the back-end team was stuck trying to connect MySQL and the stock API together with the web app and transferring data from the API to the database.
 
 
 
