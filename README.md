@@ -1,24 +1,27 @@
 # cis4004-group14 README
 
 ## Step 1
-Download MysqlWorkbench(https://dev.mysql.com/downloads/workbench/) and Node.js(https://nodejs.org/en)
+Download MysqlWorkbench(https://dev.mysql.com/downloads/workbench/) and Node.js(https://nodejs.org/en) The MySQL80 service will need to be running for the app to work.
 
 ## Step 2
-Download and save folder containing all the files and folder we have provided.
+Download the .zip from github containing all the files and folders we have provided, then extract it.
 
 ## Step 3
-Open Windows PowerShell or Terminal if on Mac
+Insert the .env file that was submitted with the project to the main directory where app.js is located. (.env cannot be included in the github as it contains API keys that should not be shared with the public.)
 
 ## Step 4
-Use cd or dir commands to find the folder with all the contents
+Open Windows PowerShell or Terminal if on Mac
 
 ## Step 5
-Run npm install and then npm install
+Use cd or dir commands to find the main directory containing app.js
 
-## Step 6 
-Open browser and go to the link your terminal or Windows Powershell will tell you. (http://localhost:3000/)?
+## Step 6
+Run npm install and then npm start
 
-## Step 7 
+## Step 7
+Open your browser and navigate to the web app. PowerShell or Terminal output will show the URL that takes you to the website. (typically http://localhost:3000/)
+
+## Step 8
 You should now be at our main landing page which will ask you to log in or sign up. 
 
 
