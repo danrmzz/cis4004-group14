@@ -7,7 +7,7 @@ Download MysqlWorkbench(https://dev.mysql.com/downloads/workbench/) and Node.js(
 Download the .zip from github containing all the files and folders we have provided, then extract it.
 
 ## Step 3
-Insert the .env file that was submitted with the project to the main directory where app.js is located. (.env cannot be included in the github as it contains API keys that should not be shared with the public.)
+Insert the .env file that was submitted with the project on Canvas to the main directory where app.js is located. (.env cannot be included in the github as it contains API keys that should not be shared with the public.)
 
 ## Step 4
 Open Windows PowerShell or Terminal if on Mac
