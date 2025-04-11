@@ -7,7 +7,37 @@ Download MysqlWorkbench(https://dev.mysql.com/downloads/workbench/) and Node.js(
 Download the .zip from github containing all the files and folders we have provided, then extract it.
 
 ## Step 3
-Insert the .env file that was submitted with the project on Canvas to the main directory where app.js is located. (.env cannot be included in the github as it contains API keys that should not be shared with the public.)
+Create a .env file using the template below with your own keys in the main directory where app.js is located. (.env cannot be included in the github as it contains API keys that should not be shared with the public.)
+
+.env file:
+
+ALPHA_VANTAGE_API_KEY= [Insert your API key here]
+
+FIREBASE_API_KEY=[Insert your API key here]
+
+FIREBASE_AUTH_DOMAIN=[Insert your API key here]
+
+FIREBASE_PROJECT_ID=[Insert your API key here]
+
+FIREBASE_STORAGE_BUCKET=[Insert your API key here]
+
+FIREBASE_MESSAGING_SENDER_ID=[Insert your API key here]
+
+FIREBASE_APP_ID=[Insert your API key here]
+
+FIREBASE_MEASUREMENT_ID=[Insert your API key here]
+
+### Database Configuration
+DB_HOST=localhost
+
+DB_USER=root
+
+DB_PASSWORD=1234
+
+DB_NAME=financial_dashboard
+
+DB_PORT=3306
+
 
 ## Step 4
 Open Windows PowerShell or Terminal if on Mac
